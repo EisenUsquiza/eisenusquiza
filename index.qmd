@@ -3,25 +3,37 @@ title: "Clases de R"
 author: "Eisen Carlos Usquiza Cruz"
 format: html
 editor: visual
+editor_options: 
+  chunk_output_type: console
 ---
+#diseños experimentales
+##DCA
+Dosis de fertilizacion nitrogenada:
+-0
+-50
+-100
+-150
+Rep:5
+```{r}
+library(agricolae)
+dosis <- c(0, 50, 100, 150)
+rep <- 5
+dca <- design.crd(trt = dosis, r = rep, seed = 123)
+print(dca$book)
+library(ggplot2)
+dca_df <- as.data.frame(dca$book)
 
-## Quarto
+```
+##DBCA 
+Factorial variedades de papa: canchan y peruanita
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
 ```{r}
-1 + 1
+trt <- c(4, 2)
+outdesign <- design.ab(trt, r = 5, serie = 2)
+book <- outdesign$book
+book
 ```
 
-You can add options to executable code like this
 
-```{r}
-#| echo: false
-2 * 2
-```
 
-The `echo: false` option disables the printing of code (only output is displayed).

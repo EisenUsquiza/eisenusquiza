@@ -4,9 +4,11 @@
     "tempName": "Untitled3",
     "source_window_id": "",
     "Source": "Source",
-    "cursorPosition": "27,0",
-    "scrollLine": "12",
+    "cursorPosition": "34,0",
+    "scrollLine": "17",
     "docOutlineVisible": "1",
     "rmdVisualCollapsedChunks": "",
-    "rmdVisualModeLocation": "94:333.3333435058594"
+    "rmdVisualModeLocation": "94:333.3333435058594",
+    "docOutlineSize": "110",
+    "chunk_output_type": "console"
 }
