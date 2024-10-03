@@ -185,6 +185,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 39   139     5 1 1
 40   140     5 3 1</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>book_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(book)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(book_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Parcela"</span>, <span class="st">"Bloque"</span>, <span class="st">"Dosis"</span>, <span class="st">"Variedad"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(book_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(Bloque), <span class="at">y =</span> <span class="fu">interaction</span>(Dosis, Variedad))) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Bloques"</span>, <span class="at">y =</span> <span class="st">"Tratamientos (Dosis x Variedad)"</span>, <span class="at">title =</span> <span class="st">"Diseño Factorial en Bloques Aleatorizados (4x2 con 5 Bloques)"</span>) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 
 </main>

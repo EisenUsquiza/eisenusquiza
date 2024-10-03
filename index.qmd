@@ -33,6 +33,13 @@ trt <- c(4, 2)
 outdesign <- design.ab(trt, r = 5, serie = 2)
 book <- outdesign$book
 book
+library(ggplot2)
+book_df <- as.data.frame(book)
+colnames(book_df) <- c("Parcela", "Bloque", "Dosis", "Variedad")
+ggplot(book_df, aes(x = as.factor(Bloque), y = interaction(Dosis, Variedad))) +
+  geom_point() +
+  labs(x = "Bloques", y = "Tratamientos (Dosis x Variedad)", title = "Diseño Factorial en Bloques Aleatorizados (4x2 con 5 Bloques)") +
+  theme_minimal()
 ```
 
 
