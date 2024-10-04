@@ -6,14 +6,9 @@ editor: visual
 editor_options: 
   chunk_output_type: console
 ---
-#diseños experimentales
-##DCA
-Dosis de fertilizacion nitrogenada:
--0
--50
--100
--150
-Rep:5
+
+#diseños experimentales ##DCA Dosis de fertilizacion nitrogenada: -0 -50 -100 -150 Rep:5
+
 ```{r}
 library(agricolae)
 dosis <- c(0, 50, 100, 150)
@@ -24,9 +19,8 @@ library(ggplot2)
 dca_df <- as.data.frame(dca$book)
 
 ```
-##DBCA 
-Factorial variedades de papa: canchan y peruanita
 
+##DBCA Factorial variedades de papa: canchan y peruanita
 
 ```{r}
 trt <- c(4, 2)
@@ -42,5 +36,29 @@ ggplot(book_df, aes(x = as.factor(Bloque), y = interaction(Dosis, Variedad))) +
   theme_minimal()
 ```
 
+Base de datos \## Importar datos
 
+```{r}
+library(readxl)
+fb <- read_excel("fb.xlsx", sheet = "fb")
+View(fb)
+str(fb)
 
+```
+
+## Modelo estadistico
+
+```{r}
+modelo <- aov(formula = lfa~riego+geno+geno+riego*geno+bloque, data=fb)
+plot(modelo)
+anova(modelo)
+
+```
+
+##Comparacion de medias
+
+```{r}
+mc <- agricolae::duncan.test(y= modelo,trt=c("riego","geno"))
+mc
+plot(mc)
+```
