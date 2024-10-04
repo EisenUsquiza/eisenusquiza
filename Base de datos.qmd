@@ -1,0 +1,34 @@
+---
+title: "Base de datps"
+author: "Eisen Carlos Usquiza Cruz"
+format: html
+editor: visual
+---
+
+Base de datos
+## Importar datos
+```{r}
+library(readxl)
+fb <- read_excel("fb.xlsx", sheet = "fb")
+View(fb)
+str(fb)
+
+```
+## Modelo estadistico
+```{r}
+modelo <- aov(formula = lfa~riego+geno+geno+riego*geno+bloque, data=fb)
+plot(modelo)
+anova(modelo)
+
+```
+
+##Comparacion de medias
+```{r}
+mc <- agricolae::duncan.test(y= modelo,trt=c("riego","geno"))
+mc
+plot(mc)
+```
+
+
+
+
