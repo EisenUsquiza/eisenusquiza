@@ -41,7 +41,6 @@ Base de datos \## Importar datos
 ```{r}
 library(readxl)
 fb <- read_excel("fb.xlsx", sheet = "fb")
-View(fb)
 str(fb)
 
 ```
